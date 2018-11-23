@@ -25,12 +25,11 @@
         <li
           v-for="(data, i) in json"
           :class="activeClass(i)"
+          :key="i"
+          @click.prevent="selectList(data)"
+          @mousemove="mousemove(i)"
         >
-          <a
-            href="#"
-            @click.prevent="selectList(data)"
-            @mousemove="mousemove(i)"
-          >
+          <a href="#">
             <div v-if="onShouldRenderChild" v-html="onShouldRenderChild(data)"></div>
             <div v-if="!onShouldRenderChild">
               <b class="autocomplete-anchor-text">{{ deepValue(data, anchor) }}</b>
